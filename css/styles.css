@@ -1,0 +1,107 @@
+body{
+    margin: 0;
+}
+
+/* background image */
+.body-div {
+    position: relative; 
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* to adjust the opacity of the background image you need to 
+create a duplicate of the image background so that it doesn't affect the elements on top*/
+.body-div::before {
+    content: ' ';
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    background-image: url('../css/images/background.jpeg');
+    background-size: cover;
+    background-position: top center;
+    background-repeat: no-repeat;
+    filter: brightness(80%);
+}
+
+/* 
+absolute - positioned according to the closest ancestor
+    removes the element from document flow
+relative - positioned relative to the original postion  
+*/
+
+
+.clock{
+    position: relative;
+    display: flex;
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+    background-color: rgba(138, 138, 138, 0.187);
+    border: 5px solid white;
+    /* box-shadow: 0px 10px 20px(blur) 20px(spread); box-shadow: left/right(positive#) up/down(positive#); 
+    
+    spread - after the blur ex.20px and then start the fade out effect
+    */
+    box-shadow: 
+        0px 0px 15px rgba(11, 11, 11, 0.688),
+        inset 0px 0px 15px rgba(11, 11, 11, 0.688),
+        inset 0 0 0 2px #dfdfdf,
+        0 0 10px rgba(0,0,0,0.2)
+    ;
+}
+
+
+.hand{
+    position: absolute;
+    height: 2px;
+    background: white;
+    border: 1px solid black;
+    top: 50%;
+    transform-origin: 100%;
+    transform: rotate(90deg);
+    transition: all 0.3s cubic-bezier(0, 1.59, 0.4, 0.77);
+}
+
+
+
+.hour{
+    right: 50%;
+    width: 60px;
+    background: rgb(249, 248, 248);
+    z-index: 2;
+}
+
+.minute {
+    right: 50%;
+    width: 80px;
+    z-index: 1;
+}
+
+.second {
+    right: 50%;
+    width: 80px;
+    height: 1px;
+    background-color: rgb(243, 128, 147);
+    z-index: 0;
+}
+
+p.current-time{
+    position: absolute;
+    font-weight: bold;
+    font-size: 20px;
+    color: rgba(255, 255, 255, 0.853);
+    transform: translateY(150px);
+}
+
+p.time {
+    position: absolute;
+    font-weight: bold;
+    font-size: 20px;
+    color: rgba(255, 255, 255, 0.853);
+    transform: translateY(200px);
+} 
